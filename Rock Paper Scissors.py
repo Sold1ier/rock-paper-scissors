@@ -2,7 +2,9 @@ import random
 
 # GLOBAL VARIABLE
 winner = None # Bot or Player
-is_game_running = False
+is_game_running = False # checks if the game is running or not
+player_points = 0
+bot_points = 0
 
 # Run The Game
 def play_game():
@@ -13,7 +15,7 @@ def play_game():
 
 # Check who is the winner (BOT or Player)
 def game():
-  global winners
+  global winner
   global is_game_running
   playerChoice = input('Choose rock paper or scissors: ')
   botChoice = ['rock', 'paper', 'scissors']
@@ -71,12 +73,16 @@ def game():
     print('Tie')
     winner = None
     restart()
- 
+    
 
 
 # function that restarts for another round based on the user is input
 def restart():
-    is_restart = input("do you want to play another round?: ")
+    is_restart = input("do you want to play another round? [y/n]: ")
+    if is_restart == "y":
+        play_game()
+    else:
+        is_game_running = False
 
 
 
