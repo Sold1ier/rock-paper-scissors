@@ -1,16 +1,20 @@
 import random
+
 # GLOBAL VARIABLE
 winner = None # Bot or Player
-gameRuning = False
+is_game_running = False
+
 # Run The Game
-def playGame():
-  global gameRuning
-  gameRuning = True
-  whoWin()
+def play_game():
+  global is_game_running
+  is_game_running = True
+  game()
+
+
 # Check who is the winner (BOT or Player)
-def whoWin():
-  global winner
-  global gameRuning
+def game():
+  global winners
+  global is_game_running
   playerChoice = input('Choose rock paper or scissors: ')
   botChoice = ['rock', 'paper', 'scissors']
   botChoice = random.choice(botChoice)
@@ -24,51 +28,55 @@ def whoWin():
     print('')
     print('You WON!')
     winner = 'Player' 
-    gameRuning = False   
+    restart()   
   elif playerChoice == 'scissors' and botChoice == 'paper':
     print('')
     print('You WON!')
     winner = 'Player'
-    gameRuning = False
+    restart()
   elif playerChoice == 'paper' and botChoice == 'rock':
     print('')
     print('You WON!')
     winner = 'Player'
-    gameRuning = False
+    restart()
   # Bot Win Conditions
   elif botChoice == 'rock' and  playerChoice == 'scissors':
     print('')
     print('Bot WON, You Lose')
     winner = 'bot'
-    gameRuning = False
+    restart()
   elif botChoice == 'scissors' and  playerChoice == 'paper':
     print('')
     print('Bot WON, You Lose')
     winner = 'bot'
-    gameRuning = False
+    restart()
   elif botChoice == 'paper' and playerChoice == 'rock':
     print('')
     print('Bot WON, You Lose')
     winner = 'bot'
-    gameRuning = False
+    restart()
   # Tie Conditions
   elif playerChoice == 'rock' and botChoice == 'rock':
     print('')
     print('Tie')
     winner = None
-    gameRuning = False
+    restart()
   elif playerChoice == 'scissors' and botChoice == 'scissors':
     print('')
     print('Tie')
     winner = None
-    gameRuning = False
+    restart()
   elif playerChoice == 'paper' and botChoice == 'paper':
     print('')
     print('Tie')
     winner = None
-    gameRuning = False
+    restart()
  
-  
+
+
+# function that restarts for another round based on the user is input
+def restart():
+    is_restart = input("do you want to play another round?: ")
 
 
 
@@ -76,7 +84,7 @@ def whoWin():
 
 
 
-playGame()
+play_game()
     
 
 
